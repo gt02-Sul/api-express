@@ -5,7 +5,7 @@ const os = require('os');
 const app = express();
 const port = 3000;
 
-app.use(express.json());
+app.use(express.json()); // Vamos usar esse formato
 
 app.use('/users', userRoutes);
 

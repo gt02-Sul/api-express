@@ -1,26 +1,25 @@
 
 let users = [
-    {id: 1, name: "Carlos Terceiro", email: "carlos.terceiro@email.com"},
-    {id: 2, name: "Natan Primeiro", email: "natan.primeiro@email.com"}
+    {id: 1, name: "Carlos Lima", email: "carlos.lima@email.com"},
+    {id: 2, name: "Ryan Oliveira", email: "ryan.oliveira@email.com"}
 ]
 
-const getAllUsers = (req, res) => {
+const getAllUsers = (_req, res) => {
     res.json(users);
 };
 
-const getUserById = (req, res, next) => {
-    const userId = parseInt(req.params.id);
+const getUserById = (req, res) => {
+    const userId = parseInt(req.params.id); // Route Params
     const user = users.find((u) => u.id == userId);
     if(!user) {
         const error = new Error("Usuário não encontrado!");
         error.statusCode = 404;
-        return next(error);
     }
     res.json(user);
 };
 
 const createUser = (req, res) => {
-    const {name, email} = req.body;
+    const {name, email} = req.body; // Request Body
     if(!name || !email) {
         return res
         .status(400)
